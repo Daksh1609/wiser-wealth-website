@@ -1,0 +1,115 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Remove arrows from number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Custom scrollbar for dropdown menus */
+.overflow-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Custom slider styling */
+.slider-purple .relative > div {
+  height: 6px !important;
+  background-color: #e9d8fd !important; /* Light purple track */
+  border-radius: 10px !important;
+}
+
+.slider-purple .absolute {
+  background-color: #7e22ce !important; /* Darker purple filled track */
+  height: 6px !important;
+  border-radius: 10px !important;
+}
+
+.slider-purple [role="slider"] {
+  background-color: #7e22ce !important; /* Purple thumb */
+  border: 2px solid white !important;
+  width: 18px !important;
+  height: 18px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  margin-top: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  position: absolute !important;
+  transition: scale 0.2s ease !important;
+  /* Fix to ensure consistent alignment at all percentages */
+  margin-left: -9px !important; /* Half of the thumb width to center it properly */
+  z-index: 10 !important;
+}
+
+.slider-purple [role="slider"]:hover {
+  background-color: #9333ea !important; /* Lighter purple on hover */
+  scale: 1.05 !important;
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.7s cubic-bezier(0.22,0.68,0.43,1.06);
+}
+
+.hover-scale {
+  transition: transform 0.2s;
+}
+.hover-scale:hover {
+  transform: scale(1.04);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Use hardware acceleration on mobile */
+  .animate-fade-in,
+  .hover-scale,
+  .transition-all,
+  .transition-colors {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .animate-fade-in {
+    animation-duration: 0.5s;
+  }
+}
+
+/* Content-visibility optimization for off-screen content */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}

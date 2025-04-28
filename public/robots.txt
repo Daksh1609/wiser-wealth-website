@@ -1,0 +1,51 @@
+
+# Comprehensive robots.txt for SEO and performance optimization
+
+# Allow all web crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Optimized crawl-delay settings for different bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Yandexbot
+Allow: /
+Crawl-delay: 2
+
+# Social media crawlers
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 3
+
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 3
+
+# Asset optimization
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.woff2$
+Allow: /*.webp$
+
+# Protected paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /*.json$
+Disallow: /*?*
+Disallow: /*/search
+Disallow: /*/login

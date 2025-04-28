@@ -30,16 +30,16 @@ const ExpenseSection = ({
   const [tempValues, setTempValues] = useState<Record<string, string>>({});
 
   const handleFocus = (id: string, amount: number) => {
-    setFocusedFields(prev => ({ ...prev, [id]: true }));
-    setTempValues(prev => ({ ...prev, [id]: amount.toString() }));
+    setFocusedFields((prev) => ({ ...prev, [id]: true }));
+    setTempValues((prev) => ({ ...prev, [id]: amount.toString() }));
   };
 
   const handleBlur = (id: string) => {
-    setFocusedFields(prev => ({ ...prev, [id]: false }));
+    setFocusedFields((prev) => ({ ...prev, [id]: false }));
     const value = tempValues[id];
     if (value === '') {
       onUpdate(id, "amount", 0);
-      setTempValues(prev => ({ ...prev, [id]: '0' }));
+      setTempValues((prev) => ({ ...prev, [id]: '0' }));
     } else {
       const numValue = parseFloat(value);
       onUpdate(id, "amount", isNaN(numValue) ? 0 : numValue);
@@ -47,7 +47,7 @@ const ExpenseSection = ({
   };
 
   const handleChange = (id: string, value: string) => {
-    setTempValues(prev => ({ ...prev, [id]: value }));
+    setTempValues((prev) => ({ ...prev, [id]: value }));
   };
 
   return (
@@ -60,7 +60,7 @@ const ExpenseSection = ({
         <legend className="sr-only">{title}</legend>
 
         {items.map((item) => (
-          <div 
+          <div
             key={item.id}
             className="flex flex-col sm:flex-row items-stretch sm:items-end gap-2 sm:gap-3 mb-4 last:mb-0 relative"
           >
@@ -98,7 +98,7 @@ const ExpenseSection = ({
                   value={
                     focusedFields[item.id]
                       ? tempValues[item.id]
-                      : (item.amount === 0 && !focusedFields[item.id])
+                      : item.amount === 0 && !focusedFields[item.id]
                         ? ''
                         : item.amount
                   }
@@ -125,11 +125,11 @@ const ExpenseSection = ({
           <div className="flex w-full sm:w-auto">
             <button
               type="button"
-              className="flex w-full sm:w-auto items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-100 active:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+              className="flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-100 active:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
               onClick={onAdd}
             >
               <svg
-                className="h-4 w-4 mr-2"
+                className="h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -142,7 +142,7 @@ const ExpenseSection = ({
                   d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                 />
               </svg>
-              Add Item
+              <span>Add Item</span>
             </button>
           </div>
 

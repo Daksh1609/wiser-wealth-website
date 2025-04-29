@@ -124,13 +124,12 @@ const ExpenseSection = ({
 
         {/* Add & Total */}
         <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 mt-4 pt-4 border-t border-gray-200">
-          {/* Replace SVG plus with a text-based '+' */}
+          {/* Text-only Add Item button, smaller padding */}
           <button
             type="button"
-            className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+            className="inline-flex items-center justify-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
             onClick={onAdd}
           >
-            <span className="text-base">+</span>
             Add Item
           </button>
 

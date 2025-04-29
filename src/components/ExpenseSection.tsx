@@ -30,22 +30,22 @@ const ExpenseSection = ({
   const [tempValues, setTempValues] = useState<Record<string, string>>({});
 
   const handleFocus = (id: string, amount: number) => {
-    setFocusedFields((prev) => ({ ...prev, [id]: true }));
-    setTempValues((prev) => ({ ...prev, [id]: amount.toString() }));
+    setFocusedFields(prev => ({ ...prev, [id]: true }));
+    setTempValues(prev => ({ ...prev, [id]: amount.toString() }));
   };
 
   const handleBlur = (id: string) => {
-    setFocusedFields((prev) => ({ ...prev, [id]: false }));
+    setFocusedFields(prev => ({ ...prev, [id]: false }));
     const value = tempValues[id] ?? "";
     const num = parseFloat(value);
     onUpdate(id, "amount", isNaN(num) ? 0 : num);
     if (value === "") {
-      setTempValues((prev) => ({ ...prev, [id]: "0" }));
+      setTempValues(prev => ({ ...prev, [id]: "0" }));
     }
   };
 
   const handleChange = (id: string, value: string) => {
-    setTempValues((prev) => ({ ...prev, [id]: value }));
+    setTempValues(prev => ({ ...prev, [id]: value }));
   };
 
   return (
@@ -124,26 +124,13 @@ const ExpenseSection = ({
 
         {/* Add & Total */}
         <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 mt-4 pt-4 border-t border-gray-200">
-          {/* Button with pointer-events-none on SVG to ensure full hit-area */}
+          {/* Replace SVG plus with a text-based '+' */}
           <button
             type="button"
             className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
             onClick={onAdd}
           >
-            <svg
-              className="h-4 w-4 pointer-events-none"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
+            <span className="text-base">+</span>
             Add Item
           </button>
 
